@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LeaderboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/leaders', function () {
-    return "Hello from api";
-});
+// Route::get('/leaders', function () {
+//     return "Hello from api from another branch to see live changes";
+// });
+
+Route::get('/leaderboard', [LeaderboardController::class, 'index']);
+Route::post('/leaderboard', [LeaderboardController::class, 'store']);
+Route::delete('/leaderboard/{id}', [LeaderboardController::class, 'destroy']);
+
